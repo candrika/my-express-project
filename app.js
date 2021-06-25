@@ -4,10 +4,14 @@ const logger       = require('morgan');
 const cookieParser = require('cookie-parser');
 const router       = require('./routes/index');
 const path         = require('path');
-
+const bodyParser   = require('body-parser');
+// const cors         = require("cors");
 
 const port = process.env.PORT;
 const app = express();
+
+// app.use(cors());
+// app.options('*', cors());
 
 app.use(logger('dev'));
 app.use(express.json())
@@ -22,20 +26,16 @@ app.set('view engine','ejs');
 app.use(cookieParser());
 app.use('/static', express.static(path.join(__dirname,'public')));
 
-app.use((req,res,next)=>{
-    res.header("Access-Control-Allow-Origin","*");
-    res.header(
-        "Access-Control-Headers",
-        "Origin, X-Requested-with, Content-Type, Authorization, x-token"
-    )
 
-    if(req.method==="OPTIONS"){
-        res.header("Access-Control-Allow-Methods","PUT, POST, DELETE, GET");
+app.use((req, res, next) => { //doesn't send response just adjusts it
+    res.header("Access-Control-Allow-Origin", "*") //* to give access to any origin
+    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
-        return res.status(200).json({})
+    if(req.method === 'OPTIONS'){
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET'); //to give access to all the methods provided
+        return res.status(200).json({});
     }
-
-    next();
+    next(); //so that other routes can take over
 })
 
 app.use(router);
