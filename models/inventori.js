@@ -16,6 +16,16 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'id',
         as: 'kartustok'
       });
+
+      inventori.hasOne(models.item_penjualan, {
+        foreignKey: 'id',
+        as: 'item_penjualan'
+      });
+
+      inventori.hasOne(models.item_pembelian, {
+        foreignKey: 'id',
+        as: 'item_pembelian'
+      });
     }
   };
   inventori.init({

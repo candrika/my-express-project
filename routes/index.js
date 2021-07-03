@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const ContollerInventori = require('../controller').inventori;
 const ContollerKontak = require('../controller').kontak;
+const ControllerKasir = require('../controller').penjualan;
 
 /* const passport         = require('passport');
 const GoogleStrategy   = require('passport-google-oauth20').Strategy;
@@ -119,5 +120,10 @@ router.put('/kontak', ContollerKontak.contactUpdate);
 router.delete('/kontak/:id', ContollerKontak.contactDelete);
 
 //endpoint untuk kartu stok
-router.get('/kartu/stok',ContollerInventori.InventoriKartuStok);
+router.get('/kartu/stok', ContollerInventori.InventoriKartuStok);
+
+//endpoint untuk penjualan/kasir
+router.get('/kasir/produk', ControllerKasir.ProductSaleLists);
+router.get('/kasir/data', ControllerKasir.SalesLists);
+router.get('/kasir/item/data', ControllerKasir.SalesItemList);
 module.exports = router;

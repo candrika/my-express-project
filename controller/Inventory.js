@@ -25,6 +25,7 @@ module.exports = {
                 })
             })  
         } else {
+
             return model.inventori
             .findAll()
             .then(inventori =>
