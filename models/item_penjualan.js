@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      item_penjualan.belongsTo(model.inventory, {
+      item_penjualan.belongsTo(models.inventori, {
         foreignKey: 'produk_id',
         as: 'inventori'
       });
@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   item_penjualan.init({
     produk_id: DataTypes.INTEGER,
     qty_penjualan: DataTypes.INTEGER,
-    harga: DataTypes.INTEGER
+    harga: DataTypes.INTEGER,
+    id_penjualan:DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'item_penjualan',

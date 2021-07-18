@@ -24,10 +24,15 @@ module.exports = {
                     errors:error
                 })
             })  
-        } else {
-
+        } else {    
+            const page = req.query.page !=null ? req.query.page:0;
+            const size = req.query.size !=null ? req.query.size:10;
+            
             return model.inventori
-            .findAll()
+            .findAndCountAll({
+                limit: size,
+                offset:page*size
+            })
             .then(inventori =>
                     res.status(200).json({
                         status: true,

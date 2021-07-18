@@ -16,10 +16,12 @@ module.exports = (sequelize, DataTypes) => {
   penjualan.init({
     kode_penjualan: DataTypes.STRING,
     kode_invoice: DataTypes.STRING,
-    sub_total: DataTypes.INTEGER,
-    total: DataTypes.INTEGER,
-    diskon: DataTypes.INTEGER,
-    pajak: DataTypes.INTEGER
+    sub_total: DataTypes.DECIMAL,
+    total: DataTypes.DECIMAL,
+    diskon: DataTypes.DECIMAL,
+    pajak: DataTypes.DECIMAL,
+    total_bayar:DataTypes.DECIMAL,
+    kembalian:DataTypes.DECIMAL
   }, {
     sequelize,
     modelName: 'penjualan',

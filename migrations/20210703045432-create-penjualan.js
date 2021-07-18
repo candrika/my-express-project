@@ -15,16 +15,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       sub_total: {
-        type: Sequelize.INTEGER
+        type: Sequelize.NU
       },
       total: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL
       },
       diskon: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL
       },
       pajak: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL
       },
       createdAt: {
         allowNull: false,
@@ -33,7 +33,13 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      total_bayar: {
+        type: Sequelize.DECIMAL
+      },
+      kembalian: {
+        type: Sequelize.DECIMAL
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
