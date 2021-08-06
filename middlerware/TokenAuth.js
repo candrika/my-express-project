@@ -1,15 +1,23 @@
 require('dotenv').config();
 const  jwt    = require('jsonwebtoken');
 const  bcrypt = require('bcryptjs');
-const Users   = require('../models').users;
+const  User   = require('../models').user;
 
 const  secret = process.env.SECRET;
 
 module.exports={
-    CheckToken(req, res, next){
-        let token = req.headers['x-token'];
+    CheckToken(req, res, next) {
+        let token = req.headers.authorization;
+        // console.log(req.headers);
+        // if (token != "undefined") {
+        //     return res.status(400).send({
+        //         status:false,
+        //         message:"Error",
+        //         errors:"You Not Authorized"
+        //     });
+        // }
 
-        if(token.split(' ')[0] !== 'bearer'){
+        if(token.split(' ')[0] !== 'Bearer'){
             return res.status(400).send({
                 status:false,
                 message:"Error",
@@ -37,7 +45,7 @@ module.exports={
             }
 
             req.UserId = decode.id;
-
+            
             next();
         })
     },

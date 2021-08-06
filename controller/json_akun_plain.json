@@ -1,0 +1,8 @@
+[{
+    "akun_induk":{
+        "id":"data.id",
+        "akun_anak":[{
+            "id":"data.id"
+        }]
+    }    
+}]

@@ -1,4 +1,4 @@
-const TokenAuth = require('./TokenAuth');
+const TokenAuth = require('./TokenAuth').CheckToken;
 const Helper = require('./helper');
 
 module.exports = {
